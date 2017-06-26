@@ -1,0 +1,1755 @@
+<!DOCTYPE html>
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="format-detection" content="telephone=no" />
+<!--
+<meta name="viewport" content="user-scalable=1, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> -->
+
+<!--<meta name="viewport" content="user-scalable=1, initial-scale=1, width=device-width, height=device-height" /> -->
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1.5, user-scalable=yes">
+<!-- prishah use this tag -->
+<!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, width=device-width" />-->
+
+<title>Sequence</title>
+<link rel="stylesheet" type="text/css" href="js/jquery-mobile/jquery.mobile-1.4.2.css">
+<link rel="stylesheet" type="text/css" href="js/jquery-mobile-theme/themes/Frendel_Sequence.css">
+<link rel="stylesheet" type="text/css" href="css/flot.css">
+<!-------------------------------------FullCalendar- CSS------------------------------------------------>
+<link rel="stylesheet" type="text/css" href="css/jquery-ui-1.11.1.css" />
+<link rel="stylesheet" type="text/css" href="css/fullcalendar.css" />
+<!-------------------------------------FullCalendar & FLOT- CSS----------------------------------------------->
+<!-------------------------------------Slick Grid - CSS------------------------------------------------------->
+<link rel="stylesheet" href="css/slick.grid.css" type="text/css"/>
+<!-------------------------------------Slick Grid - CSS------------------------------------------------------->
+
+<!--------------------------------------Custom CSS ------------------------------------------------------------>
+<link rel="stylesheet" type="text/css" href="css/sequence_custom.css">
+<!--------------------------------------Custom CSS ------------------------------------------------------------>
+
+<script src="js/jquery.js"></script>
+<script src="lib/jquery-1.7.min.js"></script>
+<script src="lib/jquery.event.drag-2.2.js"></script>
+<script src="js/jquery-mobile/jquery.mobile-1.4.2.js"></script>
+<script src="js/jFlot.js"></script>
+<script src="js/jFlot.tooltip_0.4.3.min.js"></script>
+<script src="js/jFlotTime.js"></script>
+<script src="js/jAxisLabels.js"></script>
+<script src="js/iscroll-zoom.js"></script>
+<!-------------------------------------FullCalendar- JS----------------------------------------------->
+<script src="lib/jquery-ui-1.11.1.js"></script>
+<script src="js/fullcalendar.min.js"></script>
+<!-------------------------------------FullCalendar- JS----------------------------------------------->
+
+<!-------------------------------------Slick Grid - JS------------------------------------------------>
+<script src="js/slick.core.js"></script>
+<script src="js/slick.grid.js"></script>
+<script src="js/slick.formatters.js"></script>
+<!-------------------------------------Slick Grid - JS------------------------------------------------>
+
+<!----------------------------------------MAPS--------------------------------------------------->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+<!----------------------------------------MAPS--------------------------------------------------->
+
+<!-------------------------------------Bootstrap------------------------------------------------>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="js/bootstrap.min.js"></script>
+<!-------------------------------------Bootstrap------------------------------------------------>
+
+<!------------------------------------MultipleImagePicker------------------------------------------------>
+<script src="js/imagepicker.js"></script>
+<!-------------------------------------MultipleImagePicker------------------------------------------------>
+
+
+<!------------------------------------------JSPDF------------------------------------------------>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
+<!--<script type="text/javascript" src="js/jspdf.min.js"></script>-->
+<script type="text/javascript" src="js/email_composer.js"></script>
+<!--<script type="text/javascript" src="js/FileSaver.js"></script>
+<script type="text/javascript" src="js/jspdf.plugin.table.js"></script> -->
+<!------------------------------------------JSPDF------------------------------------------------>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+</head>
+
+<body>
+
+ <!-- Login Page begins here -->
+<div data-role="page" id = "login" class="slide fixPageFooter ">
+<form id="frmLogin" name="LoginPage">
+  <!-- Header Section begins here -->
+  <div class="ui-header ui-header-fixed" data-role="header" >
+    <p style="text-align: center; margin-top:10px;"> <b><span class="glyphicon glyphicon-phone"></span> Sequence LITE </b></p>
+  </div>
+ 
+  <!-- Header section ends here -->
+  
+  <!-- Contents begins here -->  
+  <div data-role="content" class="ui-content setMargin">
+  <div align="center">
+  	<img src="img/sq_erp_icon.png" style="height:150px; width:150px; margin-top:10px" alt="_Sequence" />
+  </div>
+  
+  <ul data-role="listview" data-inset="true" data-theme="b"> 
+	  <li>
+         <input type="text" style="text-align:center" name="uname" id="uname" placeholder="Username">
+      </li>
+      <li> 
+      	<input type="password" style="text-align:center" name="pwd" id="pwd" placeholder="Password">
+      </li>
+      <li>
+       <p style="text-align:center">
+       <button type="submit" id="btnLogin" class="ui-btn"><span class="glyphicon glyphicon-log-in" dw_span_id="true"></span> Log in</button> 
+       </p>
+       </li>
+  </ul>
+  </div>
+    
+</form>  
+</div>
+
+<!-- Main Information Page starts here -->
+<div data-role="page" id="mainInfoMenu" data-theme="a" class="slide fixPageFooter ">
+	<!--Header Begins Here -->
+	<div class="ui-header ui-header-fixed" data-role="header">
+    	<h1><span class="glyphicon glyphicon-info-sign"></span> Information Menu </h1>
+    	 <a class="btnHeader" href="#login" data-transition="slide" 
+        data-inline="true" data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>
+        
+    </div>
+  	<!--Header Ends Here -->
+
+    <!-- Content (Information Menu) Starts here -->    
+    <div data-role="content" class="ui-content setMargin">
+    <ul data-role="listview" data-inset="true" data-theme="a"> 
+	  <li>         
+         <a href="#orderPage"><span class="glyphicon glyphicon-info-sign"></span> Order Information - 'Orders' </a>
+      </li>
+      <li></li>
+      <li> 
+      	<a onClick="resetProjectSelection();return false;"><span class="glyphicon glyphicon-info-sign"></span> Project Information - 'Projects' </a>
+      </li>
+      <li></li>
+      <li> 
+      	<a href="#reportingSection"><span class="glyphicon glyphicon-file"></span> Reporting </a>
+      </li>      
+  	</ul>
+  	</div>
+    <!-- Content (Information Menu) End here -->
+    
+    <!-- Footer Starts -->
+    <div class="ui-footer ui-footer-fixed" data-role="footer" data-theme="b" > <!--ps1 data-position="fixed" > style="margin-top:300px" -->
+  	<h2 style="text-align:center"> Frendel Kitchen Ltd. © 2014  </h2>      
+	</div>
+  <!--Footer Ends --> 
+    
+</div>
+<!-- Main Information Page Ends Here -->
+
+<!-- Reporting Selection Page starts here -->
+<div data-role="page" id="reportingSection" data-theme="a" class="slide fixPageFooter ">
+	<!--Reporting Section Header Begins Here -->
+	<div class="ui-header ui-header-fixed" data-role="header">
+	  <h1><span class="glyphicon glyphicon-file"></span> Reporting Section </h1>	  
+      <a class="btnHeader" href="#mainInfoMenu"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>
+    </div>
+    <!-- End of Reporting Section Header -->
+       
+    <!--Report Section Main Content -->
+    <div data-role="content" class="setMargin">
+    <ul data-role="listview" data-inset="true" data-theme="a"> 
+	  <li>         
+         <a href="#repTotalDef"><span class="glyphicon glyphicon-file"></span> Report : 1 - Total Deficiency Report </a>
+      </li>
+      <li></li>
+      <li> 
+      	<a href="#repTonyDashboard"><span class="glyphicon glyphicon-file"></span> Report : 2 - Tony DashBoard Report </a>
+      </li>
+      <li></li>
+      <li> 
+      	<a href="#repShipping" onClick="loadCurrentDate()"><span class="glyphicon glyphicon-file"></span> Report : 3 - Shipping Report </a>
+      </li>
+      <li> </li>
+      <li> 
+      	<a href="#recInstallations" onClick="generateRecentInstallations()"><span class="glyphicon glyphicon-file"></span> Report : 4 - Recent Installations </a>
+      </li> 
+      <li> </li>
+      <li> 
+      	<a href="#repOutstandingInstallations" onClick="generateOutstandingInstallations()"><span class="glyphicon glyphicon-file"></span> Report : 5 - Outstanding Installations </a>
+      </li>
+      <li> </li>
+      <li> 
+      	<a href="#repRequiredLayout" onClick="generateRequiredLayout()"><span class="glyphicon glyphicon-file"></span> Report : 6 - Required Layouts </a>
+      </li>
+       <li> </li>
+      <li> 
+      	<a href="#repTotalLayoutByPerson" onClick="generateLast30Days()"><span class="glyphicon glyphicon-file"></span> Report : 7 - Total Layouts Drawn by Person by Date Range </a>
+      </li>
+      <li> </li>
+      <li> 
+      	<a href="#repProductionComplete" onClick="loadCurrentDate()"><span class="glyphicon glyphicon-file"></span> Report : 8 - Production Report  </a>
+      </li>     
+  	</ul>  	            
+    				
+    </div>
+    <!--End of Report Section Main Content -->
+    
+ </div>
+ 
+<!-- Report 1 : Total Deficiency Report here -->
+<div data-role="page" id="repTotalDef" data-theme="a" class="slide fixPageFooter ">
+	<!--Report 1 Selection Header Begins Here -->
+	<div class="ui-header ui-header-fixed" data-role="header">
+    	<h1><span class="glyphicon glyphicon-tags"></span> Total Deficiency Report </h1>    	<a class="btnHeader" href="#reportingSection"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>
+    </div>        
+    <!-- End of Report 1 Selection Header -->
+    
+	<!--Report 1  Main Content -->
+    <div data-role="main" class="ui-content setMargin1">
+    	<div id="divReport1" style="width:680px" data-role="collapsible" data-collapsed="false">     
+          <h5>Report : 1- Total Deficiency Report</h5>
+          <table border="0">
+            <tr>
+            <td style="padding-top:6px"><label>From: </label> </td> 
+            <td><input type="text" id="dateFrom" class="txtXSmallSize" readonly ></td>  
+            <td>&nbsp; </td>
+            <td style="padding-top:6px"><label>To: </label></td> 
+            <td><input type="text" id="dateTo" class="txtXSmallSize" readonly></td>        
+            </tr>
+            <tr>
+                <td colspan="4" align="right"> <input id="btnTotalDef" type="button" class="ui-btn ui-btn-corner-all ui-mini" value="Refresh">           
+                </td>
+            </tr>
+   
+		  </table>
+          <div class="demo-container">
+               <div id="flotTotalDefPlaceholder" class="demo-placeholder"></div>
+          </div>
+          
+      </div>
+      
+    </div>
+    <!-- End of main section -->
+</div>
+<!-- End of Report 1 Total Def Report Page Section -->
+
+<!-- Report 2 : Tony Dashboard Report here -->
+<div data-role="page" id="repTonyDashboard" data-theme="a" class="slide fixPageFooter ">
+	<!--Report 2 Selection Header Begins Here -->
+	<div class="ui-header ui-header-fixed" data-role="header">
+    	<h1><span class="glyphicon glyphicon-tags"></span> Tony Dashboard Report </h1>    	<a class="btnHeader" href="#reportingSection"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>
+    </div>
+    <!-- End of Report 2 Selection Header -->
+    
+	<!--Report 2  Main Content -->
+    <div data-role="main" class="ui-content setMargin1">
+    	<div id="divReport2" style="width:680px" data-role="collapsible" data-collapsed="false">
+          <h5>Report : 2- Tony DashBoard Report</h5>
+          <table border="0">
+            <tr>
+            <td style="padding-top:6px"><label>From: </label> </td> 
+            <td><input type="text" id="date1From" class="txtXSmallSize" readonly ></td>  
+            <td>&nbsp; </td>
+            <td style="padding-top:6px"><label>To: </label></td> 
+            <td><input type="text" id="date1To" class="txtXSmallSize" readonly></td>        
+            </tr>
+            <tr>
+                <td colspan="4" align="right"> <input id="btnTonyDash" type="button" class="ui-btn ui-btn-corner-all ui-mini" value="Refresh">           
+                </td>
+            </tr>
+   
+		  </table>
+          <div class="demo-container">
+               <div id="flotTonyDashPlaceholder" class="demo-placeholder"></div>
+          </div>
+          
+      </div>
+      
+    </div>
+    <!-- End of main section -->
+</div>
+<!-- End of Report 2 Dashboard Report Page Section -->
+
+<!-- Report 3 : Shipping Report here -->
+<div data-role="page" id="repShipping" data-theme="a" class="slide fixPageFooter ">
+	<!--Report 3 Selection Header Begins Here -->
+	<div class="ui-header ui-header-fixed" data-role="header">
+	<h1><span class="glyphicon glyphicon-tags"></span> Shipping Report </h1>    
+    <a class="btnHeader" href="#reportingSection"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>
+    </div>
+    <!-- End of Report 3 Selection Header -->
+    
+	<!--Report 3  Main Content -->
+    <div data-role="main" class="ui-content setMargin1">
+    	<table border="0">
+            <tr>
+            <td style="padding-top:10px;white-space:nowrap;"><label>Select Date : </label> </td> 
+            <td><input type="text" id="dateShipping" class="txtXSmallSize" readonly ></td>  
+            <td>&nbsp; </td>
+            <td style="padding-top:6px"><input id="btnShipping" type="button" class="ui-btn ui-btn-corner-all ui-mini" value="Refresh"> </td>                    
+            </tr>            
+   
+		</table>
+         <table width="100%">
+          <tr>
+            <td valign="top" width="50%">
+             <div id="grdShippingReport" class="myGrid" style="width:965px;height:650px;"></div>
+            </td>            
+          </tr>
+        </table>
+        <p></p>
+        <!--<table id="tblShippingReport" class="tblHeadStyle " border="1" style="white-space:nowrap">
+        </table> -->	
+    </div>
+    <!-- End of main section -->
+</div>
+<!-- End of Report 3 Dashboard Report Page Section -->
+
+<!-- Report 4 : Recent Installations Report here -->
+<div data-role="page" id="recInstallations" data-theme="a" class="slide fixPageFooter ">
+	<!--Report 4 Selection Header Begins Here -->
+	<div class="ui-header ui-header-fixed" data-role="header">
+	<h1><span class="glyphicon glyphicon-tags"></span> Installation Report </h1>    
+    <a class="btnHeader" href="#reportingSection"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>
+    </div>
+    <!-- End of Report 4 Selection Header -->
+    
+	<!--Report 4  Main Content -->
+    <div data-role="main" class="ui-content setMargin1">  	
+        <table width="100%">
+          <tr>
+            <td valign="top" width="50%">
+             <div id="grdRecentInstallations" class="myGrid" style="width:1170px;height:650px;"></div>
+            </td>            
+          </tr>
+        </table>
+        <p></p>
+            	      
+    </div>
+    <!-- End of main section -->
+</div>
+<!-- End of Report 4 Recent Installations Section -->
+
+<!-- Report 5 : Outstanding Installations Report here -->
+<div data-role="page" id="repOutstandingInstallations" data-theme="a" class="slide fixPageFooter ">
+	<!--Report 5 Selection Header Begins Here -->
+	<div class="ui-header ui-header-fixed" data-role="header">
+	  <h1><span class="glyphicon glyphicon-tags"></span> Outstanding Installation Report </h1>
+	  <a class="btnHeader" href="#reportingSection"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>
+    </div>
+    <!-- End of Report 5 Selection Header -->
+    
+	<!--Report 5  Main Content -->
+    <div id="wrapper1" data-role="main" class="ui-content setMargin1">    	
+        <table width="100%">
+          <tr>
+            <td valign="top" width="50%">
+              <div id="grdOutstandingInstallations" class="myGrid" style="width:965px;height:650px;"></div>
+            </td>
+          </tr>
+        </table>
+        <p></p>
+            	      
+    </div>    
+        
+    <!-- End of main section -->
+</div>
+<!-- End of Report 5 Outstanding Installations Section -->
+
+<!-- Report 6 : Required Layout here -->
+
+<!-- End of Report 6 Required Layout Section -->
+<div data-role="page" id="repRequiredLayout" data-theme="a" class="slide fixPageFooter ">
+	<!--Report 6 Selection Header Begins Here -->
+	<div class="ui-header ui-header-fixed" data-role="header">
+	<h1><span class="glyphicon glyphicon-tags"></span> Required Layout </h1>    
+    <a class="btnHeader" href="#reportingSection"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>
+    </div>
+    <!-- End of Report 6 Selection Header -->
+    
+	<!--Report 6  Main Content -->
+    <div data-role="main" class="ui-content setMargin1">    	
+        <table width="100%">
+          <tr>
+            <td valign="top" width="50%">
+              <div id="grdRequiredLayout" class="myGrid" style="width:980px;height:650px;"></div>
+            </td>            
+          </tr>
+        </table>
+        <p></p>
+            	      
+    </div>
+    <!-- End of main section -->
+</div>
+
+<!-- Report 7 : total layout Report here -->
+<div data-role="page" id="repTotalLayoutByPerson" data-theme="a" class="slide fixPageFooter ">
+	<!--Report 7 Selection Header Begins Here -->
+	<div class="ui-header ui-header-fixed" data-role="header">
+    	<h1><span class="glyphicon glyphicon-tags"></span> Total Layouts Report </h1>    	<a class="btnHeader" href="#reportingSection"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>
+    </div>
+    <!-- End of Report 7 Selection Header -->
+    
+	<!--Report 7  Main Content -->
+    <div data-role="main" class="ui-content setMargin1">
+    	<div id="divReport2" style="width:680px" data-role="collapsible" data-collapsed="false">
+          <h5>Report : 7- Total LayoutsDrawnByPerson</h5>
+          <table border="0">
+            <tr>
+            <td style="padding-top:6px"><label>From: </label> </td> 
+            <td><input type="text" id="date2From" class="txtXSmallSize" readonly ></td>  
+            <td>&nbsp; </td>
+            <td style="padding-top:6px"><label>To: </label></td> 
+            <td><input type="text" id="date2To" class="txtXSmallSize" readonly></td>        
+            </tr>
+            <tr>
+                <td colspan="4" align="right"> <input id="btnTotalLayouts" type="button" class="ui-btn ui-btn-corner-all ui-mini" value="Refresh" onClick="generateTotalLayoutByPerson()">           
+                </td>
+            </tr>
+   
+		  </table>
+          <div class="demo-container">
+               <div id="flotTotalLayoutsPlaceholder" class="demo-placeholder"></div>
+          </div>
+          
+      </div>
+      
+    </div>
+    <!-- End of main section -->
+</div>
+<!-- End of Report 7 total layout Section -->
+
+<!-- Report 8 : Production Complete Report here -->
+<div data-role="page" id="repProductionComplete" data-theme="a" class="slide fixPageFooter ">
+	<!--Report 8 Header Begins Here -->
+	<div class="ui-header ui-header-fixed" data-role="header">
+    	<h1><span class="glyphicon glyphicon-tags"></span> Production Report </h1>    	
+        <a class="btnHeader" href="#reportingSection"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>
+    </div>
+    <!-- End of Report 8  Header -->
+    
+	<!--Report 8  Main Content -->
+    <div data-role="main" class="ui-content setMargin1">    	
+          <table border="0">
+            <tr>
+            <td style="padding-top:8px; white-space:nowrap"><label>Select Date: </label> </td>
+            <td><input type="text" id="dateOrderCompleted" class="txtXSmallSize" readonly ></td>  
+            <td>&nbsp; </td>
+            <td colspan="4" style="padding-top:4px; text-align:right"> <input id="btnOrderCompleted" type="button" class="ui-btn ui-btn-corner-all ui-mini" value="Refresh" onClick="generateProductionCompleted()">           
+            </td>
+            <td>        
+            </tr>    
+		  </table>
+          
+          <table width="100%">
+          <tr>
+            <td valign="top" width="50%">
+              <div id="grdOrderCompleted" class="myGrid" style="width:600px;height:650px;"></div>
+            </td>            
+          </tr>         
+        </table>
+        <p> </p>
+        
+        <div class="nowrap" width="100%">
+        <label id="id1" >Total Orders= </label>
+        <label id="lblTotalOrders" ></label>
+        <label id="id2">Total Doors= </label>
+        <label id="lblTotalDoors"></label>
+        </div>
+        
+    </div>
+    <!-- End of main section -->
+</div>
+<!-- End of Report 8 Production Complete Report Section -->
+
+<!-- Project Selection Page starts here -->
+<div data-role="page" id="projectSelectionPage" data-theme="a" class="slide fixPageFooter ">
+		 
+	<!--Project Selection Header Begins Here -->
+	<div class="ui-header ui-header-fixed" data-role="header">
+    	<h1><span class="glyphicon glyphicon-tags"></span> Project Selection </h1>    	
+        <a class="btnHeader" href="#mainInfoMenu"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>
+    </div>
+    <!-- End of Project Selection Header -->
+    
+	<!--Project Selection Main Content -->
+    <div data-role="main" class="ui-content setMargin">
+    <div id="loader" style="text-align:center;display:none" >
+      <img src="img/ajax-loader.gif" class="ajaxLoader" /> </div>    
+    	<!-- Selection by builder-Project List -->
+      	<div id="divProjectSelection"  data-role="collapsible" data-collapsed="false">
+          <h5>Option- Select by builder/Project</h5>      
+          <table id="tblProjectSelectionList">
+            <tr> 
+              <td><label class="lblPadding1">Builder: </label></td>
+              <td>
+                  <select name="builderList" id="builderList" data-ajax="true" data-role="none" class="cmbLargeSize">
+                  <option>---Builder List---</option>
+                  </select>
+              </td>
+            </tr>
+            
+            <tr> 
+              <td><label class="lblPadding1">Project: </label></td>
+              <td> 
+                  <select name="projectList" id="projectList" data-ajax="true" data-role="none" class="cmbLargeSize">
+                  <option>---Project List---</option>
+                  </select>   
+              </td>
+            </tr>
+
+           </table>   
+    	</div>
+        <!-- End of Selection by builder-Project List -->
+               
+        
+        <div>
+        	<ul data-role="listview" data-inset="true" data-theme="a">
+                <li data-icon="plus"><a href="#address" onClick="properProjectSelection()"><span class="glyphicon glyphicon-info-sign"></span> Address</a></li>
+                 <li data-icon="plus"><a href="#siteContactList" data-rel="popup" data-position-to="window" data-transition="slide" onClick="properProjectSelection()"><span class="glyphicon glyphicon-user"></span> Site Contact List</a></li>
+                 <li data-icon="plus"><a href="#frendelRepList" data-rel="popup" data-position-to="window" data-transition="slide" onClick="properProjectSelection()"><span class="glyphicon glyphicon glyphicon-star"></span> Frendel Reps</a></li>
+                 <li data-icon="plus"><a href="#projectStatus" onClick="properProjectSelection()"><span class="glyphicon glyphicon-stats"></span> Project Status</a></li>
+                 <li data-icon="plus"><a onClick="projectSchedule()"><span class="glyphicon glyphicon-tasks"></span> Project Schedule</a></li>
+                 <li data-icon="plus"><a href="#fullCalendarEvent" onClick="properProjectSelection()"><span class="glyphicon glyphicon-calendar"></span> Calendar</a></li>                 
+		    </ul>
+        </div>
+        
+        	<!-- Site Contact List Starts Here -->
+            <div data-role="popup" id="siteContactList" class="slide">
+              <div data-role="header" data-theme="a">
+                <h1>Contact List</h1>               
+                <a class="btnHeader" href="#projectSelectionPage"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>                     
+             </div>
+              <!--Content -->  
+              <div data-role="main" class="ui-content">                
+                <div id="divSiteContactList" class="div-margin-adjustment" data-role="fieldcontain">
+	              <div><b class="orderInfoDisplay"> </b> </div>
+                  <table id="tblSiteContactList" class="tblHeadStyle" border="1" style="white-space:nowrap">
+                  </table>
+                </div>
+		
+              </div>
+                           
+            </div>
+            <!-- Site Contact List Ends Here -->
+            
+            <!-- Frendel Rep Starts Here -->
+            <div data-role="popup" id="frendelRepList" class="slide">
+              <div data-role="header" data-theme="a">
+                <h1>Frendel Reps</h1>                               
+                <a class="btnHeader" href="#projectSelectionPage" data-transition="slide" data-inline="true" data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>                     
+             </div>
+              <!--Content -->  
+              <div data-role="main" class="ui-content">                    	          
+                <div id="divFrendelRepList" data-role="fieldcontain">
+                <div><b class="orderInfoDisplay"> </b> </div>
+                <table id="tblFrendelRepList" border="1">
+				<tr> 
+              			<td><label>Sales </label></td>
+			        <td>
+				  <input class="txtXMediumSize" type="text" id="txtSales" data-role="none" disabled />
+              			</td>
+				</tr>
+                <tr> 
+              			<td><label>Measurer </label></td>
+			        <td>
+				  <input class="txtXMediumSize" type="text" id="txtMeasurer" data-role="none" disabled />
+              			</td>
+				</tr>
+                    
+				<tr> 
+              			<td><label>Service Office </label></td>
+			        <td><input class="txtXMediumSize" type="text" id="txtServiceOffice" data-role="none" disabled /></td>
+				</tr>
+                    
+				<tr> 
+              			<td><label>Service Field </label></td>
+			        <td>
+				<input class="txtXMediumSize" type="text" id="txtServiceField" data-role="none" disabled />
+              			</td>
+				</tr> 
+                </table>
+                </div>
+
+              </div>              
+            </div>
+            <!-- Frendel Rep Ends Here -->
+
+     </div>
+     <!-- End of Project Selection Main Content -->
+             
+</div>    
+<!-- End of Project Selection Page here -->
+
+<!--Project Schedule Starts Here -->
+<div data-role="page" id="projSchedule" data-theme="a" class="slide "> 
+  <!--Header Begins Here -->
+  <div data-role="header"> 
+    <h1>Project Schedule</h1>
+    <a class="btnHeader" href="#projectSelectionPage"
+    data-transition="slide"
+    data-inline="true" onClick="loaderOff()"                  
+    data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>
+  </div>
+  <!--Header Ends Here  --> 
+  
+  <!--Content --> 
+  <div id="divProjSchedule" class="div-margin-adjustment" data-role="fieldcontain">  
+  <div><b class="orderInfoDisplay"> </b> </div>
+  
+         <!--<table width="100%">
+          <tr>
+            <td valign="top" width="50%">
+             <div id="grdProjSchedule" class="myGrid" style="width:1250px;height:750px;"></div>
+            </td>            
+          </tr>
+        </table> -->
+   <p></p>
+  <table id="tblProjSchedule" class="tblHeadStyle resizeWidthHeight" border="1">
+  
+  </table>
+  </div>
+  <!-- End of Content -->
+  
+  </div>
+<!-- End of Project Schedule -->
+
+ <!--Display Measuring Image Starts Here -->
+<div data-role="page" id="projMeasuringImage" data-theme="a" class="slide "> 
+  <!--Header Begins Here -->
+  <div data-role="header"> 
+    <h1>Measuring Image</h1>
+    <a class="btnHeader" href="#projSchedule"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>
+  </div>
+  <!--Header Ends Here  --> 
+  
+  <!--Content --> 
+  <div id="divProjMeasuringImage" class="div-margin-adjustment" data-role="fieldcontain">
+  <img id="imgMeasuring" class="resizeWidthHeight"/>
+  
+  </div>
+  <!-- End of Content -->
+  
+  </div>
+<!-- End of Display Measuring Image -->
+
+<!-- Address Starts Here -->
+<div data-role="page" id="address" data-theme="a" class="slide fixPageFooter">
+  <!--Header Begins Here -->
+  <div class="ui-header ui-header-fixed" data-role="header">
+    <h1>Address</h1>    
+    <a class="btnHeader" href="#projectSelectionPage"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>
+    </div>
+  <!--Header Ends Here  --> 
+  
+  <!--Content --> 
+  <div class="setMargin1" data-role="content" id="divAddress">
+  <div><b class="orderInfoDisplay"> </b> </div>
+     
+  <table id="tblAddress" border="0" class="setMargin">         	
+    <tr>             
+    <td colspan="2"><label id="lbltxtRegion"> </label>
+    </td>
+    </tr>
+    
+    <tr>    
+    <td><label id="lbltxtDeliveryRegion" class="lblPaddingHeight"> </label> </td>
+    <td>
+    <a href="#mapView" class="ui-btn ui-btn-inline ui-mini" id="btnMap1" data-inline="true" data-role="button" onClick="mapLocationStatus()"><span class="glyphicon glyphicon-map-marker"></span> GoogleMap </a>   
+    
+    </td> 
+    </tr>
+    
+    <tr>    
+    <td colspan="2"><label id="lbltxtAddress"> </label> </td>      
+    </tr>
+    
+    <tr> 
+    <td colspan="2"> <label id="lbltxtCity"> </label></td>
+    <!-- <td><input type="text" class = "txtXMediumSize" data-role="none" id="txtCity"  disabled/></td> -->    
+    </tr>
+            
+   	<tr> 
+    <td colspan="2"> <label id="lbltxtPoCode"> </label></td>
+    <!--<td><input type="text" class = "txtXMediumSize" data-role="none" id="txtPostalCode"  disabled/></td> -->    
+    </tr>
+                   
+    <tr> 
+    <td> <label id="lblPhone"> Phone: </label></td>
+    <td> <label id="lbltxtPhone"> </label></td>    
+    </tr>
+    
+    <tr>
+    <td> <label id="lblFax"> Fax: </label></td>
+    <td> <label id="lbltxtFax"> </label></td>    
+    </tr>
+    
+    <tr> 
+    <td colspan="2"> <label id="lbltxtEmail"> </label></td>
+    </tr>
+    
+    <tr> 
+    <td colspan="2"> <p id="pWebsite"> </p></td>        
+    </tr>
+        
+ </table> 
+ </div>
+   
+  <!--End of Content --> 
+  
+</div>
+<!-- Address Ends Here -->
+
+<div data-role="page" id="mapView" data-theme="a" >
+  <!--Header Begins Here -->
+  <div class="ui-header" data-role="header">
+    <h1>MapView</h1>
+    <a href="#" class="btnHeader" id="btnMapView" data-inline="true" data-role="button" data-transition="slide" ><span class="glyphicon glyphicon-backward"></span> Back </a></div>
+  <!--Header Ends Here  --> 
+  
+  <!--Content -->
+  <div data-role="content" id="divmapView">
+     <div id="map-canvas"> </div>      	
+  </div>
+  
+  
+  
+</div> 
+
+<!-- Project Status Here -->
+<div data-role="page" id="projectStatus" data-theme="a" class="slide fixPageFooter"> 
+  <!--Header Begins Here -->
+  <div class="ui-header ui-header-fixed" data-role="header"> 
+    <h1>Project Status</h1>                 
+    <a class="btnHeader" href="#projectSelectionPage"
+    data-transition="slide"
+    data-inline="true"                        
+    data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>                    
+  </div>
+  <!--Header Ends Here  --> 
+  
+  <!--Content -->
+  <div class="setMargin1" data-role="fieldcontain" id="divProjectStatus">
+  <div><b class="orderInfoDisplay"> </b> </div>
+  <div> </div>
+  	<label class="lblPadding2" style="margin-top:0">Measured </label>
+   <div class="progress progress-striped active">
+   		<div id="progMeasured" class="progress-bar progress-bar-success" role="progressbar" 
+			aria-valuemin="0" aria-valuemax="100" style="text-align:center;">
+        </div>
+	</div>
+	<label class="lblPadding2" style="margin-top:0">Layouts Done </label>    
+   <div class="progress progress-striped active">
+   		<div id="progLayoutDone" class="progress-bar progress-bar-success" role="progressbar" 
+				    aria-valuemin="0" aria-valuemax="100" style="text-align:center;">				      			
+   		</div>
+	</div>
+    <label class="lblPadding2" style="margin-top:0">In Production </label>    
+   <div class="progress progress-striped active">
+   		<div id="progInProduction" class="progress-bar progress-bar-success" role="progressbar" 
+				    aria-valuemin="0" aria-valuemax="100" style="text-align:center;">
+         </div>
+	</div>
+    <label class="lblPadding2" style="margin-top:0">Shipped </label>    
+   	<div class="progress progress-striped active">
+   		<div id="progShipped" class="progress-bar progress-bar-success" role="progressbar" 
+				    aria-valuemin="0" aria-valuemax="100" style="text-align:center;">
+   		</div>
+	</div>
+    <label class="lblPadding2" style="margin-top:0">Inspected </label>    
+    <div class="progress progress-striped active">
+   		<div id="progInspected" class="progress-bar progress-bar-success" role="progressbar" 
+				    aria-valuemin="0" aria-valuemax="100" style="text-align:center;">
+   		</div>
+	</div>
+    <table border="0"> 
+        <tr> 
+        <td><label class="lblPadding2">Total Lots </label> </td>
+        <td>&nbsp;&nbsp;</td>
+    	<td><label id="lblTotalLots" class="lblPadding2" style="color:red"></label> </td>
+        </tr>
+        
+        <tr>
+        <td><label class="lblPadding2">First Shipping Date </label></td>
+        <td>&nbsp;&nbsp;</td>
+        <td><label id="lblFirstShippingDate" class="lblPadding2"> </label></td>
+        </tr>
+        
+        <tr>
+        <td><label class="lblPadding2">Last Shipping Date </label> </td>
+        <td>&nbsp;&nbsp;</td>
+        <td><label id="lblLastShippingDate" class="lblPadding2"> </label></td>
+        </tr>
+        
+        <tr>
+        <td style="white-space:nowrap;"><label class="lblPadding2">Outstanding Deficiencies </label>  </td>
+        <td>&nbsp;&nbsp;</td>
+        <td><label id="lblOutStandingDef" class="lblPadding2"> </label></td>
+        </tr>
+        
+        <tr>
+        <td style="white-space:nowrap;"><label class="lblPadding2">Complete Deficiencies </label>  </td>
+        <td>&nbsp;&nbsp;</td>
+        <td><label id="lblCompleteDef" class="lblPadding2"> </label></td>
+        </tr>
+    </table>
+      
+ </div>
+   
+  <!--End of Content --> 
+    
+</div>
+<!-- Project Status Ends Here -->
+
+ <!-- Calendar Starts Here -->
+<div data-role="page" id="fullCalendarEvent" data-theme="a" class="slide fixPageFooter">             
+  <div class="ui-header ui-header-fixed" data-role="header">
+    <h1>Calendar</h1>
+    <a class="btnHeader" href="#projectSelectionPage"
+    data-transition="slide"
+    data-inline="true"                        
+    data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>    
+    
+ </div>
+  <!--Content --> 
+  <div data-role="main" class="ui-content setMargin">
+  <div><b class="orderInfoDisplay"> </b> </div> 
+  	<div align="center">
+    <button id="btnPrev" class="ui-btn-inline" data-inline="true" data-icon="arrow-l">Prev</button>
+    <button id="btnNext" data-inline="true" data-icon="arrow-r">Next</button>
+    <button id="btnToday" data-inline="true" data-icon="arrow-u">Today</button>
+    </div> 
+    <div align="center">
+        <button id="btnDispCalendar" data-inline="true" data-icon="arrow-d">CalendarDisplay</button>
+    </div>                   	          
+    <div id="divfullCalendar" class="div-margin-adjustment">
+     
+    </div>           
+         
+  </div>
+  
+</div>
+<!-- Calendar Ends Here -->
+ 
+<!-- Order Selection Page begins  --->
+<div data-role="page" id="orderPage" data-theme="a" class="slide fixPageFooter ">
+<form id="frmSearchFK" name="FkNo">
+<!--Header Begins Here -->
+  <div class="ui-header ui-header-fixed " data-role="header"> <!-- ps1 data-position="fixed" > -->
+   <h1><span class="glyphicon glyphicon-shopping-cart"></span> Order Selection</h1>
+   <a class="btnHeader" href="#mainInfoMenu"
+                  data-transition="slide"
+                  data-inline="true"                        
+                  data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>
+  </div>
+  <!--Header Ends Here  --> 
+  
+  <!--Order Selection Page Content Begins Here -->     	
+  <div data-role="main" class="ui-content setMargin">   
+    <!-- Selection by builder-Project List -->
+      <div id="divOrderSelection"  data-role="collapsible" data-collapsed="false">
+          <h5>Option1- Select by builder/Project</h5>
+          <table id="tblOrderSelectionList">
+            <tr> 
+              <td><label class="lblPadding1">Builder: </label></td>
+              <td>
+                  <select name="cmbBuilder" id="cmbBuilder" data-ajax="true" data-role="none" class="cmbLargeSize">
+                  <option>---Builder List---</option>
+                  </select>
+              </td>
+            </tr>
+            <tr> 
+              <td><label class="lblPadding1">Project: </label></td>
+              <td> 
+                  <select name="cmbProject" id="cmbProject" data-ajax="true" data-role="none" class="cmbLargeSize">
+                  <option>---Project List---</option>
+                  </select>
+              </td>
+            </tr>
+           <tr> 
+              <td><label class="lblPadding1">Lot: </label></td>
+              <td> 
+                  <select name = "cmbLot" id="cmbLot" data-ajax="true" data-role="none" class="cmbLargeSize">
+                  <option>---Lot List---</option>
+                  </select>
+              </td>
+            </tr>
+            <tr>
+                <td>&nbsp; </td>
+                <td colspan="2" style="text-align:center"><button type="button" id="btnDisplayOrders" class="ui-btn  ui-btn-inline ui-mini" onClick="displayOrderInfo()"><span class="glyphicon glyphicon-list"></span> Display Orders </button>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+          </table>
+      </div>
+                
+      <!-- Selection by FK# -->
+     	<div id="fkSearch" data-role="collapsible" data-collapsed="false" >
+          <h5>Option2- Select by FK#</h5>
+              <table id="tblFKSearch" border=0>
+                <tr> 
+                    <td>SearchFK# </td>
+                    <td><input id="txtSearchFKNo" type="text" data-role="none" class="txtXXMediumSize"/> </td>
+                    <td>&nbsp;</td>
+                </tr>
+                <!--class="ui-btn ui-btn-inline ui-btn-corner-all" -->
+                <tr>
+         	        <!--<td>&nbsp;</td>-->
+                    <td colspan="3" align="right">
+                    <button type="submit" id="btnSearchFkNo" class="ui-btn  ui-btn-inline ui-mini" ><span class="glyphicon glyphicon-search"></span> Search</button> <!-- data-role="none" -->                    
+                    <button type="button" id="btnClearFkNo" class="ui-btn  ui-btn-inline ui-mini"><span class="glyphicon glyphicon-trash"></span> Clear</button> <!-- data-role="none" -->
+                    </td>
+                </tr>
+              </table>
+    	</div>     
+	 <!-- Selection by last 10 viewed project -->
+     <div id="lastProjectList" data-role="collapsible" data-collapsed="false" >
+          <h5>Option3- Select by last 10 viewed project</h5>
+          <table id="tblFKSearch" border=0>
+                <tr> 
+                    <td>Project:</td>
+                    <td><select name = "cmbViewedProject" id="cmbViewedProject" data-ajax="true" data-role="none" class="cmbLargeSize">
+             <option>--Last 10 Viewed Builder/Project--</option>
+           </select></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr> 
+                    <td><label class="lblPadding1">Lot: </label></td>
+                    <td> 
+                      <select name = "cmbViewedProjLot" id="cmbViewedProjLot" data-ajax="true" data-role="none" class="cmbLargeSize">
+                      	<option>---Viewed Project Lot List---</option>            
+                      </select>
+                    </td>
+            	</tr>
+                <tr>                   	               
+                    <td colspan="2" style="text-align:center"><button type="button" id="btnDisplayOrders" class="ui-btn  ui-btn-inline ui-mini" onClick="viewOrderInfo()"><span class="glyphicon glyphicon-list"></span> View Orders </button></td>
+                    <td>&nbsp;</td> 
+                </tr>
+           </table>
+
+    </div>
+
+  </div> 
+
+</form>     
+</div>
+
+<!--End of "Order Selection" Page-->   
+
+<!-- Home Page Begins here -->
+  
+<div data-role="page" id="home" data-theme="a" class="slide">
+  
+  <!--Header Begins Here -->
+  <div class="ui-header " data-role="header"> <!-- ps1 data-position="fixed" > -->
+    <h1><span class="glyphicon glyphicon-phone"></span> Sequence</h1>    
+    <a class="btnHeader" href="#orderPage"
+                  data-transition="slide"
+                  data-inline="true"                        
+                  data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>            
+  </div>
+  
+  <!--Header Ends Here  --> 
+  
+  <!--Home Page Content Begins Here -->
+  <div data-role="main" class="ui-content setMargin">
+    <div><b class="orderInfoDisplay"> </b> </div>
+  
+    <ul data-role="listview" data-inset="true">
+      <li data-icon="plus"><a href="#style_colour" data-rel="popup" data-transition="slide" data-position-to="window"><span class="glyphicon glyphicon-barcode"></span> Style/Colour</a></li>
+      <li data-icon="plus"><a href="#schedule"><span class="glyphicon glyphicon-list-alt"></span> Schedule</a></li>
+      <li data-icon="plus"><a href="#office_status"><span class="glyphicon glyphicon-stats"></span> Office Status</a></li>
+      <li data-icon="plus"><a href="#production_status"><span class="glyphicon glyphicon-stats"></span> Production Status</a></li>
+      <li data-icon="plus"><a href="#service"><span class="glyphicon glyphicon-bookmark"></span> Service</a></li>
+      <li data-icon="plus"><a href="#attachment"><span class="glyphicon glyphicon-paperclip"></span> Attachments</a></li>      
+       <li data-icon="plus"><a href="#viewLayout" onClick="viewLayout()"><span class="glyphicon glyphicon-file"></span> View Layout</a></li>
+    </ul>
+    		<!-- Style/Colour Starts Here -->                                      
+            <div data-role="popup" id="style_colour" class="slide ">
+              <div data-role="header" data-theme="a">
+                <h1>Style/Colour</h1>               
+                <a class="btnHeader" href="#home"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>                     
+             </div>
+              <!--Content  -->  
+              <div data-role="main" class="ui-content">	
+                
+                <div id="divStyleColour" class="div-margin-adjustment" data-role="fieldcontain">
+ 	              <div><b class="orderInfoDisplay"> </b> </div>
+                  <table id="tblStyleColour" class="tblHeadStyle" border="1">
+                  </table>
+                </div>
+		
+              </div>
+                            
+            </div>
+            <!-- Style/Colour Ends Here -->     
+    
+  </div>
+  <!--Home Page Content Ends Here --> 
+  
+  <!--footer Starts -->  
+  <!--<div class="ui-footer ui-footer-fixed" data-role="footer" data-theme="b" >
+  	<h2 style="text-align:center"> Frendel Kitchen Ltd. © 2014  </h2>
+  </div> -->
+  <!--footer Ends --> 
+  
+</div>
+
+<!--Landing Page Ends Here --> 
+
+
+<!-- Schedule Starts Here -->
+<div data-role="page" id="schedule" data-theme="a" class="slide fixPageFooter"> 
+  <!--Header Begins Here -->
+  <div class="ui-header ui-header-fixed" data-role="header">
+    <h1> Schedule</h1>                
+    <a class="btnHeader" href="#home"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>              
+  </div>
+  <!--Header Ends Here  --> 
+  
+  <!--Content --> 
+  <div class="setMargin1" data-role="fieldcontain" id="divSchedule">
+  <div><b class="orderInfoDisplay"> </b> </div>
+  <table id="tblSchedule" border="0" class="setMargin">
+  
+  	<tr>
+    <td class="lblPadding" ><label id="lblMeasuring"> Measuring: </label></td><!-- data-role="none" remove round corner from textbox -->
+    <td><input class="txtMediumSize" type="text" data-role="none" id="txtMeasuringDate" disabled/></td> 
+    <td><input class="txtMediumSize" type="text" data-role="none" id="txtMeasurerName" disabled /></td>
+    </tr>
+    
+    <tr>
+    <td class="lblPadding" ><label id="lblForecast"> Forecast: </label></td><!-- data-role="none" remove round corner from textbox -->
+    <td><input class="txtMediumSize" type="text" data-role="none" id="txtForecast" disabled/></td> 
+    <td><input class="txtMediumSize" type="text" data-role="none" id="txtForecastUser" disabled /></td>
+    </tr>
+    
+    <tr> 
+    <td class = "lblPadding" > <label id="lblExpectedShip"> Expected Ship: </label></td>
+    <td><input class="txtMediumSize" type="text" data-role="none" id="txtExpShip" disabled/></td> 
+     <td><input class="txtMediumSize" type="text" data-role="none" id="txtExpShipUser" disabled/></td>
+    </tr>
+    
+    <tr> 
+    <td class = "lblPadding"> <label id="lblSiteRequest"> Site Request: </label></td>
+    <td><input class="txtMediumSize" type="text" data-role="none" id="txtSiteRequestDate" disabled/> </td> 
+    <td>&nbsp;</td> 
+    </tr>
+    
+    <tr> 
+    <td class = "lblPadding"> <label id="lblComment"> Comment: </label></td>
+    <td colspan="2">
+    <!--<input type="text" class = "txtLargeSize" data-role="none" id="txtCommentSchedule"  disabled/> -->
+    <textarea name="textArea1" class="txtLargeSize" cols="30" rows="3" data-role="none" id="txtCommentSchedule" disabled> </textarea>
+    </td>    
+    <!--<td>    
+    <input type="checkbox" class="chkAdjustCls" id="chkComment" value="" /> 
+    <label id="lblHold" class="lblAdjustCls"> On Hold </label>
+    </td> --> 
+   </tr>
+           
+   <tr> 
+    <td class = "lblPadding"> <label id="lblTruckETA"> Truck ETA: </label></td>
+    <td colspan="2"><input type="text" class= "txtLargeSize" data-role="none" id="txtTruckDeliveryDate" disabled/></td> 
+    <td>&nbsp;</td>
+   </tr>
+   
+   <tr> 
+    <td class = "lblPadding"> <label id="lblShippedOn"> Shipped On: </label></td>
+    <td><input class="txtMediumSize" type="text" id="txtShipped" data-role="none" disabled/></td> 
+    <td><input class="txtMediumSize" type="text" id="txtShipper" data-role="none" disabled/></td> 
+    <!--<td rowspan="2">    
+    <textarea name="textArea" cols="30" rows="5" data-role="none" id="txtProductionGroupNumber" disabled> </textarea>
+    </td>--> 
+   </tr>
+    
+    <tr> 
+    <td class = "lblPadding"> <label id="lblInstalled"> Installed: </label></td>
+    <td><input class="txtMediumSize" type="text" id="txtInstalled" data-role="none" disabled/></td> 
+    <td><input class="txtMediumSize" type="text" id="txtInstaller" data-role="none" disabled/></td>     
+    </tr>
+    
+    <tr> 
+    <td class = "lblPadding"> <label id="lblInpected"> Inspected: </label></td>
+    <td><input class="txtMediumSize" type="text" id="txtInspected" data-role="none" disabled/></td>     
+    </tr>
+ </table>
+ </div>
+   
+  <!--End of Content --> 
+    
+</div>
+<!-- Schedule Ends Here --> 
+
+<!--Office Status Starts Here -->
+<div data-role="page" id="office_status" data-theme="a" class="slide fixPageFooter"> 
+  <!--Header Begins Here -->
+  <div class="ui-header ui-header-fixed" data-role="header"> <!--ps1 data-position="fixed"> -->
+    <h1> Office Status</h1>
+    <a class="btnHeader" href="#home"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>     
+  </div>
+  <!--Header Ends Here  --> 
+  
+  <!--Content -->
+  <div data-role="main" class="ui-content setMargin">
+    <!-- Colour Department -->
+    <div><b class="orderInfoDisplay"> </b> </div>
+      <div id="colourDept"  data-role="collapsible" data-collapsed="false">
+          <h5>Colour Department</h5>      
+          <table id="tblColourDept" border="0">
+            <tr> 
+              <td><label class="lblPadding1">Colour: </label></td>
+              <td>
+                  <input class="txtXSmallSize" type="text" id="txtColour" data-role="none" disabled />
+              </td>
+              <td>
+                  <input class="txtXSmallSize" type="text" id="txtColourUser" data-role="none" disabled />
+              </td>
+            </tr>
+            <tr> 
+              <td><label class="lblPadding1">Extras: </label></td>
+              <td>
+                  <input class="txtXSmallSize" type="text" id="txtExtra" data-role="none" disabled />
+              </td>
+              <td>
+                  <input class="txtXSmallSize" type="text" id="txtExtraUser" data-role="none" disabled />
+              </td>
+            </tr>
+                                      
+          </table>            	                             
+      </div>
+                
+      <!-- Layout Department -->
+     <div id="LayoutDept" data-role="collapsible" data-collapsed="false" >
+          <h5>Layout Department</h5>
+          <table id="tblLayoutDept" border="0">
+            <tr> 
+              <td><label class="lblPadding1">Layout Start: </label></td>
+              <td>
+                  <input class="txtXSmallSize" type="text" id="txtLayoutStart" data-role="none" disabled />
+              </td>
+              <td>
+                  <input class="txtXSmallSize" type="text" id="txtLayoutStartUser" data-role="none" disabled />
+              </td>
+              <td>
+                  <input class="txtXSmallSize" type="hidden" id="txthiddenLayout1" data-role="none" disabled />
+              </td>
+            </tr>
+            <tr> 
+              <td><label class="lblPadding1">Layout Done: </label></td>
+              <td>
+                  <input class="txtXSmallSize" type="text" id="txtLayoutDone" data-role="none" disabled />
+              </td>
+              <td>
+                  <input class="txtXSmallSize" type="text" id="txtLayoutDoneUser" data-role="none" disabled />
+              </td>
+               <td>
+                  <input class="txtXSmallSize" type="hidden" id="txthiddenLayout2" data-role="none" disabled />
+              </td>
+            </tr>
+                                       
+          </table>          
+    </div> 
+    
+	 <!-- Order Check-->
+     <div id="OrderCheck" data-role="collapsible" data-collapsed="false" >
+          <h5>Order Check</h5>
+           <table id="tblOrderCheck" border="0" >
+            <tr> 
+              <td><label>Pricing Checked: </label></td>
+              <td>
+                  <input class="txtXSmallSize" type="text" id="txtPricingChecked" data-role="none" disabled />
+              </td>
+              <td>
+                  <input class="txtXSmallSize" type="text" id="txtPricingCheckedUser" data-role="none" disabled />
+              </td>
+               <td>
+                  <input class="txtXSmallSize" type="hidden" id="txthiddenOrder1" data-role="none" disabled />
+              </td>
+            </tr>
+            <tr> 
+              <td><label >Order Check Start: </label></td>
+              <td>
+                  <input class="txtXSmallSize" type="text" id="txtOrderCheck" data-role="none" disabled />
+              </td>
+              <td>
+                  <input class="txtXSmallSize" type="text" id="txtOrderCheckUser" data-role="none" disabled />
+              </td>
+              <td>
+                  <input class="txtXSmallSize" type="hidden" id="txthiddenOrder2" data-role="none" disabled />
+              </td>
+            </tr>
+            <tr> 
+              <td><label >Order Check Finish: </label></td>
+              <td>
+                  <input class="txtXSmallSize" type="text" id="txtProductionReady" data-role="none" disabled />
+              </td>
+              <td>
+                  <input class="txtXSmallSize" type="text" id="txtProductionReadyUser" data-role="none" disabled />
+              </td>
+            </tr>
+           <tr> 
+              <td>Door Order Date:</td>               
+              <td colspan="2"> <input class="txtXMediumSize" type="text" id="txtDoorOrderDate" data-role="none" disabled /> </td>
+           </tr>                            
+          </table>          
+    </div>
+
+  </div>
+  <!--Content --> 
+     
+</div>
+<!--Office Status Ends Here --> 
+
+<!--Production Status Starts Here -->
+<div data-role="page" id="production_status" data-theme="a" class="slide"> 
+  <!--Header Begins Here -->
+  <div data-role="header"> <!-- ps1 data-position="fixed" > -->
+    <h1> Production Status</h1>    
+    <a class="btnHeader" href="#home"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>
+  </div>
+  <!--Header Ends Here  --> 
+  
+  <!--Content -->    
+    <div data-role="fieldcontain" id="divProduction" class="div-margin-adjustment">
+    <div><b class="orderInfoDisplay"> </b> </div>
+    <table id="tblProductionStatus" border="0" class="setMargin">
+    <tr>
+    <td class="lblPadding"><label id="lblProductionReceived"> Production Received:</label> </td>
+    <td><input class="txtMediumSize" id="txtprReceived" type="text" data-role="none" disabled/></td>  
+    </tr>
+            
+    <tr> 
+    <td class="lblPadding"><label id="lblAssemblyStart"> Assembly Start: </label></td>
+    <td><input class="txtMediumSize" id="txtAssemblyStart" type="text" data-role="none" disabled/></td>  
+    </tr>
+    
+    <tr> 
+    <td class="lblPadding"><label id="lblDoorsPicked"> Doors Picked: </label></td>
+    <td><input class="txtMediumSize" id="txtDoorsPicked" type="text" data-role="none" disabled/></td>  
+    </tr>
+    
+    <tr> 
+    <td class="lblPadding"><label id="lblDoorsHinge"> Doors Hinge: </label></td>
+    <td><input class="txtMediumSize" id="txtDoorsHinge" type="text" data-role="none" disabled/></td>  
+    </tr>
+    
+    <tr> 
+    <td class="lblPadding"><label id="lblprComplete"> Production Complete: </label></td>
+    <td><input class="txtMediumSize" id="txtprodComplete" type="text" data-role="none" disabled/></td>  
+    </tr>
+
+    </table>
+    
+    <table id="tblTotalProduction" border="0">
+    <tr>
+    <td><b>Total</b></td>
+    <td><b>Built</b></td>
+    <td><b>WrapPaint</b></td>
+    <td>&nbsp;</td>
+    </tr>
+    
+    <tr>  
+    <td><input type="text" id="txtCabTotal" class="txtSmallSize" data-role="none" disabled /></td>
+    <td><input type="text" id="txtCabBuilt" class="txtSmallSize" data-role="none" disabled/></td>
+    <td><input type="text" id="txtCabWrapPaint" class="txtSmallSize" data-role="none" disabled/></td>
+    <td>
+    <!--<button id="btnCabinetStatus" data-role="none" > Cabinet </button> -->
+    <a href="#prodCabinet" data-rel="popup" data-position-to="window" data-transition="slide" style="margin-top:0" class="ui-btn ui-corner-all ui-btn-inline ui-mini"><span class="glyphicon glyphicon-compressed"></span> Cabinet</a>  
+    </td>
+    </tr>
+    <tr>  
+    <td><input type="text" id="txtDoorTotal" class="txtSmallSize" data-role="none" disabled/></td>
+    <td><input type="text" id="txtDoorBuilt" class="txtSmallSize" data-role="none" disabled/></td>
+    <td><input type="text" id="txtDoorPainted" class="txtSmallSize" data-role="none" disabled/></td>
+    <td>
+    <!-- <button id="btnDoorStatus" data-role="none"> Door </button> -->
+    <a href="#prodDoor" data-rel="popup" data-position-to="window" data-transition="slide" style="margin-top:0" class="ui-btn ui-corner-all ui-btn-inline ui-mini" ><span class="glyphicon glyphicon-compressed"></span> Door </a>
+    </td>
+    </tr>
+    </table>
+    </div>			  
+    	    <!-- Production CABINET Starts Here -->
+            <div data-role="popup" id="prodCabinet" class="slide" >
+              <div data-role="header" data-theme="a">
+                <h1>Cabinet Status</h1>
+                <a class="btnHeader" href="#production_status"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>                 
+             </div>
+              <!--Content -->  
+              <div data-role="main" class="ui-content">	                
+                <div id="divProdCabinet" class="div-margin-adjustment" data-role="fieldcontain">
+                  <div><b class="orderInfoDisplay" style="white-space:nowrap"> </b></div>
+                  <br/>
+                  <div><b id="cabinetStatus" style="white-space:nowrap;background-color:#909090"> </b> </div>	
+                  <table id="tblProdCabinet" class="tblHeadStyle" border="1">                   	
+                  </table>                  
+                </div>
+
+              </div>
+                            
+            </div>
+            <!-- Production CABINET Ends Here --> 
+            
+            <!-- Production DOOR Starts Here -->
+            <div data-role="popup" id="prodDoor" class="slide" >
+              <div data-role="header" data-theme="a">
+                <h1>Door Status</h1>
+                 <a class="btnHeader" href="#production_status"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>                
+             </div>
+              <!--Content -->  
+              <div data-role="main" class="ui-content">	                
+                <div id="divProdDoor" class="div-margin-adjustment" data-role="fieldcontain">
+                  <div><b class="orderInfoDisplay" style="white-space:nowrap"> </b></div>
+                  <br/>
+                  <div><b id="doorStatus" style="white-space:nowrap;background-color:#909090"></b> </div>	
+                  <table id="tblProdDoor" class="tblHeadStyle" border="1">                   	
+                  </table>
+                  <br/>
+                  <div><b id="doorsDomaStatus" style="white-space:nowrap;background-color:#909090"></b> </div>
+                  <table id="tblProdDoorDoma" class="tblHeadStyle" border="1">              	
+                  </table>                  
+                </div>
+
+              </div>
+                           
+            </div>
+            <!-- Production DOOR Ends Here --> 
+
+  <!--End of Content --> 
+ 
+</div>
+<!--Production  Status Ends Here --> 
+
+<!--Service Starts Here -->
+<div data-role="page" id="service" data-theme="a" class="slide "> 
+  <!--Service Header Begins Here -->
+  <div data-role="header"> <!--ps1 data-position="fixed" > -->
+    <h1>Service</h1>    
+     <a class="btnHeader" href="#home"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>            
+                 
+  </div>
+  <!--Header Ends Here  --> 
+  
+  <!--Service Content Start here -->
+  <div div data-role="main" class="ui-content ">
+  <div><b class="orderInfoDisplay"> </b> </div>
+  <ul data-role="listview" data-inset="true">
+      <!--<li data-icon="info"><a href="#Service_Lot_Info" data-rel="popup" data-position-to="window" data-transition="slide"><span class="glyphicon glyphicon-tag"></span> Lot Information</a></li> -->
+      <li data-icon="false"><a href="#Service_Customer_Info" class="list-group-item"><span class="glyphicon glyphicon-tag"></span> Customer Information </a></li>
+      <li data-icon="false"><a href="#Service_OpenDeficiency" data-rel="popup" data-position-to="window" data-transition="slide" class="list-group-item"><span class="glyphicon glyphicon-pushpin"></span> Open Deficiency <span id="countOpenDef" class="badge badgeStyle" ></span></a></li>
+      <li data-icon="false"><a href="#Service_ClosedDeficiency" data-rel="popup" data-transition="slide" data-position-to="window" class="list-group-item"><span class="glyphicon glyphicon-pushpin"></span> Closed Deficiency <span id="countClosedDef" class="badge badgeStyle"></span></a></li>
+      <li data-icon="false"><a href="#Service_ScheduleLog" data-rel="popup" data-position-to="popup" data-transition="slide" class="list-group-item"><span class="glyphicon glyphicon-pushpin"></span> Service Schedule Log</a></li>
+      <li data-icon="false"><a href="#Service_CallLogs" data-rel="popup" data-position-to="popup" data-transition="slide" class="list-group-item"><span class="glyphicon glyphicon-pushpin"></span> Call Logs</a></li>
+    </ul>
+            
+    <!-- Lot Information Starts Here -->
+            <!--<div data-role="popup" id="Service_Lot_Info" class="slide" >
+              <div data-role="header" data-theme="a">
+                <h1>Lot Information</h1>              
+                <a class="ui-btn-right" href="#service"
+                                    data-transition="pop"
+                                    data-inline="true"
+                                    data-role="button"
+                                    data-iconpos="notext"
+                                    data-icon="back"> Frendel Kitchens </a> 
+             </div>
+              
+              <div data-role="main" class="ui-content">	
+                
+                <div id="divServiceLotInfo" class="div-margin-adjustment" data-role="fieldcontain">
+                  <table id="tblServiceLotInfo" class="tblHeadStyle" border="1" >
+
+                  </table>                  
+                </div>
+
+              </div>
+              
+            </div> -->
+            <!-- Lot Information Ends Here -->
+
+            <!-- Open Deficiency Starts Here -->
+            <div data-role="popup" id="Service_OpenDeficiency" class="slide" >
+              <div data-role="header" data-theme="a">
+                <h1>Open Deficiency</h1>                              
+                <a class="btnHeader" href="#service"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>                     
+             </div>
+              <!--Content -->  
+              <div data-role="main" class="ui-content">
+                
+                <div id="divServiceOpenDeficiency" class="div-margin-adjustment" data-role="fieldcontain">
+                  <table id="tblServiceOpenDeficiency" class="tblHeadStyle" border="1">
+
+                  </table>                  
+                </div>
+
+              </div>
+                               
+            </div>
+            <!-- Open Deficiency Ends Here -->
+            
+            <!-- Closed Deficiency Starts Here -->
+            <div data-role="popup" id="Service_ClosedDeficiency" class="slide" >
+              <div data-role="header" data-theme="a">
+                <h1>Closed Deficiency</h1>                              
+                <a class="btnHeader" href="#service"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>   
+             </div>
+              <!--Content -->  
+              <div data-role="main" class="ui-content">
+                <div id="divServiceClosedDeficiency" class="div-margin-adjustment" data-role="fieldcontain">
+                  <table id="tblServiceClosedDeficiency" class="tblHeadStyle" border="1">
+
+                  </table>                  
+                </div>
+              </div>
+                           
+            </div>
+            <!-- Closed Deficiency Ends Here -->
+            
+             <!-- Service Schedule Logs Starts Here -->
+            <div data-role="popup" id="Service_ScheduleLog" class="slide" >
+              <div data-role="header" data-theme="a">
+                <h1>Service Schedule Logs</h1>                               
+                <a class="btnHeader" href="#service"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>   
+             </div>
+              <!--Content -->  
+              <div data-role="main" class="ui-content">
+                
+                <div id="divServiceScheduleLogs" class="div-margin-adjustment" data-role="fieldcontain">
+                  <table id="tblServiceScheduleLogs" class="tblHeadStyle" border="1">
+
+                  </table>
+                </div>
+
+              </div>
+              
+            </div>
+            <!--  Service Schedule Logs Ends Here -->
+            
+            
+            <!-- Customer Call Logs Starts Here -->
+            <div data-role="popup" id="Service_CallLogs" class="slide" >
+              <div data-role="header" data-theme="a">
+                <h1>Call Logs</h1>                 
+                <a class="btnHeader" href="#service"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a> 
+             </div>
+              <!--Content -->  
+              <div data-role="main" class="ui-content">
+                
+                <div id="divServiceCallLogs" class="div-margin-adjustment" data-role="fieldcontain">
+                  <table id="tblServiceCallLogs" class="tblHeadStyle" border="1">
+
+                  </table>                  
+                </div>
+
+              </div>
+                           
+            </div>
+            <!--  Customer Call Logs Ends Here -->
+
+  </div>
+  <!-- Service Content End here--> 
+ 
+</div>
+<!--Service Ends Here -->
+
+<!-- Customer Information (Service) Starts Here -->
+<div data-role="page" id="Service_Customer_Info" data-theme="a" class="slide fixPageFooter"> 
+  <!--Header Begins Here -->  
+	<div class="ui-header ui-header-fixed" data-role="header"> 
+    <h1> Customer Information</h1>            
+    <a class="btnHeader" href="#service"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a> 
+  </div>
+  <!--Header Ends Here  --> 
+  
+  <!--Content --> 
+  <div class="setMargin1" id="divCustomerInfo"> <!-- data-role="fieldcontain"-->
+  <table id="tblCustomerInfo" border="0">         	
+    <tr>
+    <td class="lblPadding1" colspan="2">
+    <label id="lbltxtCustFullName"> </label>    
+    </td>            
+    </tr>
+    
+    <tr>
+    <td class="lblPadding1" colspan="2"><label id="lbltxtCustStreet"> </label></td>      
+    </tr>
+    
+    <tr>    
+    <td class="lblPadding1 lblPaddingHeight" ><label id="lbltxtCustCity"> </label></td>
+    <td class="lblPadding1"><a href="#mapView" class="ui-btn ui-btn-inline ui-mini" id="btnMap" data-inline="true" data-role="button" onClick="mapLocationStatus()"><span class="glyphicon glyphicon-map-marker"></span> GoogleMap </a></td> 
+    </tr>
+    
+    <tr>    
+    <td class="lblPadding1" colspan="2"><label id="lbltxtCustPostalCode"> </label></td> 
+    </tr>    
+    
+    <tr>
+    <td class="lblPadding1" ><label id="lblCustHome1">Phone1:</label></td>
+    <td class="lblPadding1" ><label id="lbltxtCustHome1"> </label></td>
+    </tr>
+    
+    <tr>
+    <td class="lblPadding1" ><label id="lblCustHome2">Phone2:</label></td>
+    <td class="lblPadding1" ><label id="lbltxtCustHome2"> </label></td>     
+    </tr>
+    
+    <tr>
+    <td class="lblPadding1" ><label id="lblCustCellPh1"> Cell1: </label></td>
+    <td class="lblPadding1" ><label id="lbltxtCustCellPh1"> </label></td>
+    </tr>
+    
+    <tr>
+    <td class="lblPadding1"><label id="lblCustCellPh2"> Cell2: </label></td> 
+    <td class="lblPadding1"><label id="lbltxtCustCellPh2"> </label></td>
+    </tr>    
+    
+    <tr>
+    <td class="lblPadding1" ><label id="lbltxtCustEmail"> Email: </label></td>  
+    </tr>
+        
+ </table>
+ 
+ <div id="geoCurrentAddress" style="width:600px;height:600px"> </div>
+ </div>
+   
+  <!--End of Content --> 
+   
+</div>
+<!-- Customer Information(Service) Ends Here -->
+
+<!--Attachement Starts Here -->
+<div data-role="page" id="attachment" data-theme="a" class="slide fixPageFooter">
+<div id="loaderpic" style="text-align:center;display:none" >
+      <img src="img/ajax-loader.gif" class="ajaxLoader" /> </div>  
+  <!--Header Begins Here -->
+  <div class="ui-header ui-header-fixed" data-role="header" >  <!--ps1 data-position="fixed" > -->
+    <h1>Attachment</h1>
+    <a class="btnHeader" href="#home"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a>
+ 	                         
+  </div>
+  <!--Header Ends Here  --> 
+  
+  <!--Content --> 
+  <div id="divAttachment" class="setMargin1" data-role="fieldcontain"> <!-- id="divProjSchedule" -->
+   
+  <p style="text-align:right"><a id="btnInspectionPhoto" class="ui-btn ui-btn-inline ui-mini" href="#"
+                 		data-inline="true"
+                 		data-role="button"><span class="glyphicon glyphicon-camera"></span> Take Inspection Photo </a> </p>
+  <div><b class="orderInfoDisplay"> </b> </div>
+  <div id="imageButtons" style="text-align:center">
+  <table border='0' class="resizeWidthHeight setMargin">
+  <tr>
+  <td><label id="lblAccessories">Title : </label></td>
+  <td style="text-align:left"><input type="text" class="txtXMediumSize" id="txtImageTitle" data-role="none"/></td> 
+  </tr>
+  <tr>
+  <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+  <td> <label id="lblAccessories">Comment : </label></td>
+  <td style="text-align:left"><input type="text" class="txtLargeSize" id="txtImageComment" data-role="none"/></td> 
+  </tr>
+  <tr>
+  <td colspan="2">&nbsp;</td>
+  </tr>
+  <tr>
+  <td>&nbsp; 
+  
+ </td>
+  <td style="text-align:left">
+  <a id="btnImageCaptured" class="ui-btn ui-btn-inline ui-mini" href="#"
+                 		data-inline="true"
+                 		data-role="button"><span class="glyphicon glyphicon-camera"></span> Picture </a>  
+  <a id="btnImageAlbum" class="ui-btn ui-btn-inline ui-mini" href="#"
+                 		data-inline="true"
+                 		data-role="button"><span class="glyphicon glyphicon-picture"></span> Album</a>
+  </td>
+  </tr>  
+  </table> <br/>
+                          
+<!--<input type="button" id="btnImageCaptured" class="ui-btn  ui-btn-inline ui-mini" value="Capture Photo"/>
+  <input type="button" id="btnImageAlbum" class="ui-btn  ui-btn-inline ui-mini" value="Photo Album" />  --> 
+  
+  </div> <br/>
+  <table id="tblOrderAttachment" class="tblHeadStyle resizeWidthHeight" border="1">
+  
+  </table>
+  </div>  
+  <!-- End of Content --> 
+
+</div>
+<!--Attachement Ends Here -->
+
+<!-- ViewLayout Starts Here -->
+<div data-role="page" id="viewLayout" data-theme="a" class="slide fixPageFooter"> 
+  <!--Header Begins Here -->
+  <div class="ui-header ui-header-fixed" data-role="header" >  <!--ps1 data-position="fixed" > -->
+    <h1>ViewLayout</h1>
+    <a class="btnHeader" href="#home"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a> 
+  </div>
+  
+   <!--Content onClick="downloadLayout()"--> 
+  <div id="divViewLayout" class="setMargin1" data-role="fieldcontain">
+      <div ><a id="lnkEmailPDF" class="ui-btn ui-corner-all ui-btn-inline ui-mini" href="#"
+                        data-role="button" ><span class="glyphicon glyphicon-file"></span> Email PDF </a></div> </div>  
+      <div id="imgLayout" class="resizeWidthHeight"></div>      
+  </div>
+  
+ </div> 
+  <!--Header Ends Here  --> 
+<!-- ViewLayout Ends Here -->
+
+<!--Display Attached Lot Image Starts Here -->
+<div data-role="page" id="orderAttachedLotImage" data-theme="a" class="slide"> 
+  <!--Header Begins Here -->
+  <div data-role="header"> 
+    <h1>Attached Lot Image</h1>    
+    <a class="btnHeader" href="#attachment"
+                        data-transition="slide"
+                        data-inline="true"                        
+                        data-role="button"><span class="glyphicon glyphicon-backward"></span> Back </a></div>
+  <!--Header Ends Here  -->
+  
+  <!--Content --> 
+  <div id="divOrderLotImage" class="div-margin-adjustment" data-role="fieldcontain">
+  <img id="imgAttachedLot" class="resizeWidthHeight" />
+ 
+  </div>
+  <!-- End of Content -->
+  
+  </div>
+<!-- End of Display Attahced Lot Image --> 
+ 
+
+<!-- Modal pop up for Calendar-->
+<div id="fullCalModal" class="modal slidedown ">
+    <div class="modal-dialog" style="text-align:center">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalTitle" class="modal-title"></h4>
+            </div>
+            <div id="modalBody" class="modal-body div-margin-adjustment" align="center">
+            	<table id="tblCalenEventsDetails" class="tblHeadStyle" border="1">
+                  
+	    		</table>
+            </div>
+            <div> <!--class="modal-footer" -->
+                <button type="button" class="ui-btn ui-btn-inline ui-mini" data-dismiss="modal" style="background-color: #3388cc ;
+border-color: #3388cc;
+color: #fff;
+text-shadow: 0;">Close</button> <!--btn btn-sm -->
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <!-- Modal pop up for Alert boxes-->
+<div id="alertBox" class="modal slidedown" style="width:auto;">
+    <div class="modal-dialog" style="text-align:center">
+        <div class="modal-content">
+            <!--<div class="modal-header ">
+                <h4 id="modalTitle" class="modal-title"></h4>
+            </div>-->
+            <div id="modalBody" class="modal-body" align="center">
+            	<p id="alertMessage"> </p>
+            </div>
+            <div> <!--class="modal-footer" -->
+                <button type="button" class="ui-btn ui-btn-inline ui-mini" data-dismiss="modal" style="background-color: #3388cc ;
+border-color: #3388cc;
+color: #fff;
+text-shadow: 0;">Close</button> <!--btn btn-sm -->
+            </div>
+        </div>
+    </div>
+  </div>
+  
+<!--Info Page Ends Here -->
+<!--------------------------CORDOVA-------------------------------->
+<script src="js/ng-cordova.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script src="js/sequence_scripts.js"></script>
+<!--------------------------CORDOVA-------------------------------->
+</body>
+</html>

@@ -1,0 +1,259 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*.ui-field-contain{
+	padding: .50em 0;
+} */
+
+/*html{
+    overflow: hidden;
+    height: 100%;
+}*/
+body{        
+    margin: 0px;
+    padding: 0px;
+    height: 100%; 
+    -webkit-overflow-scrolling: touch;
+    
+}
+
+.fixPageFooter {
+	overflow:hidden !important;
+	position:relative !important
+}
+.setMargin {
+	margin-top:35px;
+}
+.setMargin1 {
+	margin-top:45px;
+	margin-left:20px;
+	margin-right: 20px;
+	height: 100%;
+	width:auto;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}
+span.badgeStyle{
+	background-color:red;
+}
+.resizeWidthHeight{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}
+.centerPosition{
+	text-align: center;
+}
+#loader,#loaderpic{	
+	position:absolute;
+	top:18px;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:1000;
+	background-color:grey;
+	opacity: .8;	
+}
+
+.flot-x-axis div.flot-tick-label { 
+    /* Rotate Axis Labels */
+    transform: translateX(50%) rotate(90deg); /* CSS3 */
+    transform-origin: 0 0;
+    
+    -ms-transform: translateX(50%) rotate(90deg); /* IE */
+    -ms-transform-origin: 0 0;
+
+    -moz-transform: translateX(50%) rotate(90deg); /* Firefox */
+    -moz-transform-origin: 0 0;
+
+    -webkit-transform: translateX(50%) rotate(90deg); /* Safari and Chrome */
+    -webkit-transform-origin: 0 0;
+
+    -o-transform: translateX(50%) rotate(90deg); /* Opera */
+    -o-transform-origin: 0 0;
+}
+
+.myGrid {
+  background: white;
+  outline: 0;
+  border: 1px solid gray;
+}
+
+.highlight-color{
+    background: #A3C008;
+}
+
+#map-canvas {
+
+	margin-top: 10px;
+	position : absolute !important;
+	top : 40px !important;
+	right : 0;
+	bottom : 40px !important;
+	left : 0 !important;
+	width: 100%;		
+}
+
+#mapView,#divmapView, #map-canvas{
+	overflow: hidden;
+}
+
+.lblPadding{
+	padding-right : 45px;
+	white-space : nowrap;
+}
+
+.lblPadding1{
+	padding-right : 5px;
+	white-space : nowrap;
+}
+.lblPadding2{	
+	white-space : nowrap;	
+}
+.lblPaddingHeight{
+	padding-top: 6px;
+}
+.btnHeader{
+	width:80px;
+	padding-left:5px;
+	padding-top:3px;
+}
+.nowrap label{	
+	float:left;
+        margin-right:10px;	
+}
+
+img.clickableImage{
+   cursor: pointer; 
+}
+
+/* .ui-mini for button control */
+.ui-mini{
+	padding-top: .1em;
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: .2em; 
+}
+
+/* Checkbox with label adjustment */
+input.chkAdjustCls{ float:left; margin-top: 0.10em; }
+label.lblAdjustCls{ padding-left:0px;  white-space : nowrap; margin-left: 1.8em; }
+
+/* TextBox size */
+.txtXLargeSize{
+	width: 25.5em;
+	font-style:normal;
+	background-color:#ffffff;	
+	font-family: "Times New Roman", Times, serif;
+	-webkit-text-fill-color:#000000;
+	-webkit-opacity: 1;
+}
+
+.txtLargeSize{
+	width: 15.0em;
+	font-style:normal;	
+	background-color:#ffffff;	
+	font-family: "Times New Roman", Times, serif;
+	-webkit-text-fill-color:#000000;
+	-webkit-opacity: 1;
+}
+.txtXXMediumSize{
+	width: 13.5em;
+	font-style:normal;	
+	background-color:#ffffff;	
+	font-family: "Times New Roman", Times, serif;
+	-webkit-text-fill-color:#000000;
+	-webkit-opacity: 1;
+}
+.txtXMediumSize{
+	width: 11.5em;
+	font-style:normal;	
+	background-color:#ffffff;	
+	font-family: "Times New Roman", Times, serif;
+	-webkit-text-fill-color:#000000;
+	-webkit-opacity: 1;
+}
+.txtMediumSize{
+	width: 7.5em;
+	font-style:normal;	
+	background-color:#ffffff;	
+	font-family: "Times New Roman", Times, serif;
+	-webkit-text-fill-color:#000000;
+	-webkit-opacity: 1;
+}
+
+.txtXSmallSize{
+	width: 5.75em;
+	font-style:normal;	
+	background-color:#ffffff;	
+	font-family: "Times New Roman", Times, serif;
+	-webkit-text-fill-color:#000000;
+	-webkit-opacity: 1;
+}
+
+.txtSmallSize{
+	width: 4em;
+	font-style:normal;	
+	background-color:#ffffff;	
+	font-family: "Times New Roman", Times, serif;
+	-webkit-text-fill-color:#000000;
+	-webkit-opacity: 1;
+}
+/* End of TextBox size */
+
+/* Combobox Size  */
+.cmbLargeSize{
+	width:100%;
+	float:none;
+}
+
+.tblHeadStyle th{
+	background-color:#909090;
+}
+/* all Div tag margin and Size div-home-margin */
+.div-margin-adjustment{	
+	margin: 20px;
+	height: 100%;
+	width:auto;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+/* Schedule Style */
+#txtProductionGroupNumber{
+	height: 56px;
+	width:	5.5em;
+	margin-left: 0.72em;
+	background-color:#ffffff;
+	font-style:normal;
+	font-family: "Times New Roman", Times, serif;
+	-webkit-text-fill-color:#000000;
+	-webkit-opacity: 1;
+}
+
+/* End of Schedule Style */
+
+/* Office Status */
+input.chkOfficeCls{ float:left; margin-top: 0.10em; }
+label.lblOfficeCls{ padding-left:0px;  white-space : nowrap; margin-left: 1.8em; }
+/* End of Office Status */
+
+/* Production Style */
+#lblAccessories{
+	padding-left : 0px;
+	white-space : nowrap;
+}
+
+/* End of Production Style */
+
+
+/* No Records Found  Style */
+td.no-records
+{
+	text-align:center;
+	color:red;
+
+}
+/* End of No Records Found  Style */
